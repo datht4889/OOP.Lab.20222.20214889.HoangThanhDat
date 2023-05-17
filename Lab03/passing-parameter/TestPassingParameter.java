@@ -13,11 +13,12 @@ public class TestPassingParameter {
         System.out.println("jungle dvd title: " + jungleDVD.getTitle());
 
     }
-
-    public static void swap(Wrapper o1, Wrapper o2){
-        DigitalVideoDisc tmp = o1.disc;
-        o1.disc = o2.disc;
-        o2.disc = tmp;
+    
+    public static void swap(DigitalVideoDisc o1, DigitalVideoDisc o2){
+        DigitalVideoDisc tmp = new DigitalVideoDisc(null);
+        tmp.setTitle(o1.getTitle());
+        o1.setTitle(o2.getTitle());
+        o2.setTitle(tmp.getTitle());
     }
 
     public static void changeTitle(DigitalVideoDisc dvd, String title){
@@ -27,10 +28,4 @@ public class TestPassingParameter {
     }
 }
 
-class Wrapper{
-    DigitalVideoDisc disc;
 
-    public Wrapper(DigitalVideoDisc disc){
-        this.disc = disc;
-    }
-}
