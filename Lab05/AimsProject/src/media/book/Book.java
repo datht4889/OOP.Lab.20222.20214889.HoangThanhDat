@@ -1,5 +1,9 @@
+package media.book;
+
 
 import java.util.ArrayList;
+
+import media.Media;
 
 public class Book extends Media {
     private ArrayList<String> authors = new ArrayList<String>();

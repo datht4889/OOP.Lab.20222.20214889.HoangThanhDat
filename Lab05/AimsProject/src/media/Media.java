@@ -1,6 +1,12 @@
+package media;
+
+
 import java.util.Comparator;
 
-abstract class Media {
+import media.comparator.MediaComparatorByCostTitle;
+import media.comparator.MediaComparatorByTitleCost;
+
+public abstract class Media {
     protected int id;
     protected String title;
     protected String category;

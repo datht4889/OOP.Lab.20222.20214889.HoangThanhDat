@@ -4,6 +4,15 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 
+import cart.Cart;
+import media.*;
+import media.book.Book;
+import media.disc.CompactDisc;
+import media.disc.DigitalVideoDisc;
+import screen.ViewStoreScreen;
+import store.Store;
+
+
 public class Aims {
     static Scanner myObj = new Scanner(System.in);
     static Store store = new Store();
@@ -26,7 +35,9 @@ public class Aims {
         store.addMedia(book);
         store.addMedia(book2);
 
-        showMenu();
+        // showMenu();
+
+        new ViewStoreScreen(store);
     }
 
 

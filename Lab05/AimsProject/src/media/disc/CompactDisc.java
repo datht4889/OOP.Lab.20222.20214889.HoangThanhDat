@@ -1,3 +1,4 @@
+package media.disc;
 import java.util.ArrayList;
 public class CompactDisc extends Disc implements Playable {
     private String artist;

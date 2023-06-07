@@ -1,3 +1,5 @@
+package media.disc;
+
 public class Track implements Playable {
     private String title;
     private int length;

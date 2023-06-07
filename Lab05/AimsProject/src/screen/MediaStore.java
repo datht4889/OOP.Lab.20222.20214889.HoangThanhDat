@@ -1,4 +1,9 @@
+package screen;
 import javax.swing.*;
+
+import media.Media;
+import media.disc.Playable;
+
 import java.awt.*;
 
 public class MediaStore extends JPanel{

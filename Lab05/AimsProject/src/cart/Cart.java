@@ -1,4 +1,7 @@
+package cart;
 import java.util.ArrayList;
+
+import media.Media;
 
 public class Cart {
     public static final int MAX_NUMBERS_ORDERED = 20;

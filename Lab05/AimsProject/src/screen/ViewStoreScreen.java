@@ -1,4 +1,9 @@
+package screen;
 import javax.swing.*;
+
+import media.Media;
+import store.Store;
+
 import java.awt.*;
 import java.util.ArrayList;
 
@@ -56,6 +61,7 @@ public class ViewStoreScreen extends JFrame {
         JButton cart = new JButton("View cart");
         cart.setPreferredSize(new Dimension(100, 50));
         cart.setMaximumSize(new Dimension(100, 50));
+        cart.addActionListener(null);
 
         header.add(Box.createRigidArea(new Dimension(100, 50)));
         header.add(title);

@@ -1,4 +1,7 @@
+package media.comparator;
 import java.util.Comparator;
+
+import media.Media;
 
 public class MediaComparatorByCostTitle implements Comparator<Media> {
 

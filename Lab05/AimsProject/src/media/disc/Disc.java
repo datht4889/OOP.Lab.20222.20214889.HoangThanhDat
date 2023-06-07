@@ -1,3 +1,7 @@
+package media.disc;
+
+import media.Media;
+
 public class Disc extends Media{
     private int length;
     private String director;

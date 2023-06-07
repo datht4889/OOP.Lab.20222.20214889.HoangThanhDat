@@ -1,4 +1,7 @@
+package media.comparator;
 import java.util.Comparator;
+
+import media.Media;
 public class MediaComparatorByTitleCost implements Comparator<Media> {
     @Override
     public int compare(Media media1, Media media2) {
