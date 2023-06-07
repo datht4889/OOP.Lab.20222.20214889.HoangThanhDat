@@ -1,14 +1,17 @@
 package screen;
 import javax.swing.*;
 
+import cart.Cart;
 import media.Media;
 import store.Store;
 
 import java.awt.*;
+import java.awt.event.*;
 import java.util.ArrayList;
 
 public class ViewStoreScreen extends JFrame {
     private Store store;
+    private Cart cart;
 
     public ViewStoreScreen(Store store) {
         this.store = store;
@@ -21,6 +24,8 @@ public class ViewStoreScreen extends JFrame {
         setVisible(true);
         setTitle("Store");
         setSize(1024, 768);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
     JPanel createNorth() {
@@ -58,15 +63,15 @@ public class ViewStoreScreen extends JFrame {
         title.setFont(new Font(title.getFont().getName(), Font.PLAIN, 50));
         title.setForeground(Color.CYAN);
 
-        JButton cart = new JButton("View cart");
-        cart.setPreferredSize(new Dimension(100, 50));
-        cart.setMaximumSize(new Dimension(100, 50));
-        cart.addActionListener(null);
+        JButton viewCart = new JButton("View cart");
+        viewCart.setPreferredSize(new Dimension(100, 50));
+        viewCart.setMaximumSize(new Dimension(100, 50));
+        viewCart.addActionListener(new ButtonListener(cart));
 
         header.add(Box.createRigidArea(new Dimension(100, 50)));
         header.add(title);
         header.add(Box.createHorizontalGlue());
-        header.add(cart);
+        header.add(viewCart);
         header.add(Box.createRigidArea(new Dimension(10, 10)));
 
         return header;
@@ -84,8 +89,4 @@ public class ViewStoreScreen extends JFrame {
         return center;
         
     }
-
-    // public static void main(String[] args) {
-    //     new ViewStoreScreen(new Store());
-    // }
 }

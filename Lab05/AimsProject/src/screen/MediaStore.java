@@ -23,9 +23,14 @@ public class MediaStore extends JPanel{
         JPanel container = new JPanel();
         container.setLayout(new FlowLayout(FlowLayout.CENTER));
 
-        container.add(new JButton("Add to cart"));
+        JButton addToCart = new JButton("Add to cart");
+        addToCart.addActionListener(new ButtonListener(media));
+        container.add(addToCart);
+
         if (media instanceof Playable){
-            container.add(new JButton("Play"));
+            JButton play = new JButton("Play");
+            play.addActionListener(new ButtonListener(media));
+            container.add(play);
         }
 
         this.add(Box.createVerticalGlue());
