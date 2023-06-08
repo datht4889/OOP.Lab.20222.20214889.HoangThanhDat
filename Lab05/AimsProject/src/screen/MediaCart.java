@@ -7,13 +7,11 @@ import media.disc.Playable;
 
 import java.awt.*;
 
-public class MediaStore extends JPanel{
-
-    private Media media;
+public class MediaCart extends JPanel{
     private Cart cart;
-    public MediaStore(Media media, Cart cart) {
+    private Media media;
+    public MediaCart(Media media, Cart cart) {
         this.media = media;
-        this.cart = cart;
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
         JLabel title = new JLabel(media.getTitle());
@@ -26,9 +24,9 @@ public class MediaStore extends JPanel{
         JPanel container = new JPanel();
         container.setLayout(new FlowLayout(FlowLayout.CENTER));
 
-        JButton addToCart = new JButton("Add to cart");
-        addToCart.addActionListener(new ButtonListener(media, cart));
-        container.add(addToCart);
+        JButton removeFromCart = new JButton("Remove from cart");
+        removeFromCart.addActionListener(new ButtonListener(media, cart));
+        container.add(removeFromCart);
 
         if (media instanceof Playable){
             JButton play = new JButton("Play");

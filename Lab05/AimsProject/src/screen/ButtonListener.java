@@ -33,53 +33,38 @@ public class ButtonListener implements ActionListener{
         this.media = media;
     }
 
+    public ButtonListener(Media media, Cart cart){
+        this.media = media;
+        this.cart = cart;
+    }
+
     public void actionPerformed (ActionEvent e) {
         String s = e.getActionCommand();
         if (s.equals("View cart")) {
             JDialog viewCartDialog = new JDialog();
-            // viewCartDialog.setLayout(new ());
+            viewCartDialog.setLayout(new BorderLayout());
             viewCartDialog.setTitle("Current Cart");
 
-            // center.setLayout(new GridLayout(3, 3, 2, 2));
+            JPanel center = new JPanel();
+            center.setLayout(new GridLayout(3, 3, 2, 2));
 
-            // ArrayList<Media> mediaInStore = store.getItemsInStore();
-            // for (Media media : mediaInStore) {
-            //     MediaStore cell = new MediaStore(media);
-            //     center.add(cell);
-            // }
+            ArrayList<Media> mediaInCart = cart.getItemOrdered();
+            for (Media media : mediaInCart) {
+                MediaCart cell = new MediaCart(media, cart);
+                center.add(cell);
+            }
 
-            // ArrayList<Media> mediaInCart = cart.getItemOrdered();
-            // for (Media media : mediaInCart) {
-            //     MediaStore cell = new MediaStore(media);
-            //     center.add(cell);
-            // }
-
-            DefaultTableModel bookTableModel;
-            bookTableModel = new DefaultTableModel();
-            bookTableModel.addColumn("Title");
-            bookTableModel.addColumn("Author");
-            bookTableModel.addColumn("Price");
-            JTable bookTable;
-            bookTable = new JTable(bookTableModel);
-            JScrollPane tableScrollPane = new JScrollPane(bookTable);
-
-            JButton addButton = new JButton("Add Book");
-            JButton removeButton = new JButton("Remove Book");
-
-            addButton.addActionListener(this);
-            removeButton.addActionListener(this);
-
-            JPanel buttonPanel = new JPanel();
-            buttonPanel.setLayout(new FlowLayout());
-            buttonPanel.add(addButton);
-            buttonPanel.add(removeButton);
-
-            viewCartDialog.add(tableScrollPane, BorderLayout.CENTER);
-            viewCartDialog.add(buttonPanel, BorderLayout.SOUTH);
-
+            JLabel totalCost = new JLabel("Total Price: "+cart.totalCost()+"$");
+            totalCost.setFont(new Font(totalCost.getFont().getName(), Font.PLAIN, 30));
+            totalCost.setForeground(Color.black);
+            
+            viewCartDialog.add(center, BorderLayout.CENTER);
+            viewCartDialog.add(totalCost, BorderLayout.SOUTH);
             viewCartDialog.setSize(500, 500);
             viewCartDialog.setVisible(true);
             viewCartDialog.setLocationRelativeTo(null);
+
+
         } else if (s.equals("Play")){
             JDialog playDialog = new JDialog();
             Disc disc = (Disc) media;
@@ -89,17 +74,31 @@ public class ButtonListener implements ActionListener{
             playDialog.setSize(300, 100);
             playDialog.setVisible(true);
             playDialog.setLocationRelativeTo(null);
+
+
         } else if (s.equals("Add to cart")){
             JDialog d = new JDialog();
             JLabel l = new JLabel("Add " + media.getTitle() +" to cart successfully!");
             d.add(l);        
             
+            this.cart.addMedia(this.media);
+
             d.setSize(500, 100);
             d.setVisible(true);
             d.setLocationRelativeTo(null);
-            cart.addMedia(this.media);
+
+        } else if (s.equals("Remove from cart")){
+            JDialog d = new JDialog();
+            JLabel l = new JLabel("Remove " + media.getTitle() +" successfully!");
+            d.add(l);        
             
-        } 
+            this.cart.removeMedia(this.media);
+
+            d.setSize(500, 100);
+            d.setVisible(true);
+            d.setLocationRelativeTo(null);
+
+        }
 
     }
 }

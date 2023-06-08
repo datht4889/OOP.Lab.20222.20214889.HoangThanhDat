@@ -12,12 +12,8 @@ public class Cart {
     }
 
     public void addMedia(Media media) {
-        if (itemOrdered.contains(media)) {
-            System.out.println(media.getTitle() + " is already exists in Cart.");
-        } else {
             itemOrdered.add(media);
             System.out.println(media.getTitle() + " is  added to Cart.");
-        }
     }
     
     public void removeMedia(Media media) {
@@ -29,8 +25,8 @@ public class Cart {
         }
     }
 
-    public float totalCost() {
-        float sum = 0;
+    public double totalCost() {
+        double sum = 0;
         for (Media media : itemOrdered) {
             sum += media.getCost();
         }

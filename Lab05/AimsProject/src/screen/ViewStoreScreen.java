@@ -42,13 +42,28 @@ public class ViewStoreScreen extends JFrame {
         
         JMenu option = new JMenu("Options");
         JMenu updateStore = new JMenu("Update Store");
-        updateStore.add(new JMenuItem("Add Book"));
-        updateStore.add(new JMenuItem("Add CD"));
-        updateStore.add(new JMenuItem("Add DVD"));
+        JMenuItem addBook = new JMenuItem("Add Book");
+        updateStore.add(addBook);
+        // addBook.addActionListener(new ButtonListener());
+
+        JMenuItem addCD = new JMenuItem("Add CD");
+        updateStore.add(addCD);
+        // addCD.addActionListener(new ButtonListener());
+
+        JMenuItem addDVD = new JMenuItem("Add DVD");
+        updateStore.add(addDVD);
+        // addDVD.addActionListener(new ButtonListener());
 
         option.add(updateStore);
-        option.add(new JMenuItem("View store"));
-        option.add(new JMenuItem("View cart"));
+
+        JMenuItem viewStore = new JMenuItem("View store");
+        option.add(viewStore);
+        // addDVD.addActionListener(new ButtonListener(store));
+
+        JMenuItem viewCart = new JMenuItem("View cart");
+        option.add(viewCart);
+        // addDVD.addActionListener(new ButtonListener(this.cart));
+
 
         menuBar.setLayout(new FlowLayout(FlowLayout.LEFT));
         menuBar.add(option);
@@ -84,10 +99,11 @@ public class ViewStoreScreen extends JFrame {
 
         ArrayList<Media> mediaInStore = store.getItemsInStore();
         for (Media media : mediaInStore) {
-            MediaStore cell = new MediaStore(media);
+            MediaStore cell = new MediaStore(media, cart);
             center.add(cell);
         }
         return center;
         
     }
+    
 }
