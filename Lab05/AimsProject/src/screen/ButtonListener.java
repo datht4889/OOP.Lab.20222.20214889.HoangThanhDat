@@ -5,6 +5,7 @@ import java.awt.event.*;
 import java.util.ArrayList;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 import cart.Cart;
 import media.Media;
@@ -36,14 +37,45 @@ public class ButtonListener implements ActionListener{
         String s = e.getActionCommand();
         if (s.equals("View cart")) {
             JDialog viewCartDialog = new JDialog();
-            viewCartDialog.setLayout(new GridLayout(3, 3, 2, 2));
+            // viewCartDialog.setLayout(new ());
             viewCartDialog.setTitle("Current Cart");
 
-            ArrayList<Media> mediaInCart = cart.getItemOrdered();
-            for (Media media : mediaInCart) {
-                MediaStore cell = new MediaStore(media);
-                viewCartDialog.add(cell);
-            }
+            // center.setLayout(new GridLayout(3, 3, 2, 2));
+
+            // ArrayList<Media> mediaInStore = store.getItemsInStore();
+            // for (Media media : mediaInStore) {
+            //     MediaStore cell = new MediaStore(media);
+            //     center.add(cell);
+            // }
+
+            // ArrayList<Media> mediaInCart = cart.getItemOrdered();
+            // for (Media media : mediaInCart) {
+            //     MediaStore cell = new MediaStore(media);
+            //     center.add(cell);
+            // }
+
+            DefaultTableModel bookTableModel;
+            bookTableModel = new DefaultTableModel();
+            bookTableModel.addColumn("Title");
+            bookTableModel.addColumn("Author");
+            bookTableModel.addColumn("Price");
+            JTable bookTable;
+            bookTable = new JTable(bookTableModel);
+            JScrollPane tableScrollPane = new JScrollPane(bookTable);
+
+            JButton addButton = new JButton("Add Book");
+            JButton removeButton = new JButton("Remove Book");
+
+            addButton.addActionListener(this);
+            removeButton.addActionListener(this);
+
+            JPanel buttonPanel = new JPanel();
+            buttonPanel.setLayout(new FlowLayout());
+            buttonPanel.add(addButton);
+            buttonPanel.add(removeButton);
+
+            viewCartDialog.add(tableScrollPane, BorderLayout.CENTER);
+            viewCartDialog.add(buttonPanel, BorderLayout.SOUTH);
 
             viewCartDialog.setSize(500, 500);
             viewCartDialog.setVisible(true);
@@ -65,7 +97,7 @@ public class ButtonListener implements ActionListener{
             d.setSize(500, 100);
             d.setVisible(true);
             d.setLocationRelativeTo(null);
-            this.cart.addMedia(this.media);
+            cart.addMedia(this.media);
             
         } 
 

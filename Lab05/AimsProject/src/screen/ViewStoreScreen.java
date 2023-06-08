@@ -13,8 +13,9 @@ public class ViewStoreScreen extends JFrame {
     private Store store;
     private Cart cart;
 
-    public ViewStoreScreen(Store store) {
+    public ViewStoreScreen(Store store, Cart cart) {
         this.store = store;
+        this.cart = cart;
         Container cp = getContentPane();
         cp.setLayout(new BorderLayout());
 

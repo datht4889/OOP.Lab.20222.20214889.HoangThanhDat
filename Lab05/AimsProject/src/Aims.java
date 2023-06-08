@@ -40,7 +40,7 @@ public class Aims {
         store.addMedia(book4);
         store.addMedia(book5);
 
-        new ViewStoreScreen(store);
+        new ViewStoreScreen(store, cart);
     }
 
 }
